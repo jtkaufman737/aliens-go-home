@@ -4,9 +4,14 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      <h1>Game Time!</h1>
+      <h1>{this.props.message}</h1>
       </div>
+    );
   }
+}
+
+App.propTypes={
+  message: PropTypes.string.isRequired,
 }
 
 export default App;
