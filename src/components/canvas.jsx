@@ -14,3 +14,5 @@ const Canvas = () => {
     </svg>
   );
 };
+
+export default Canvas;
