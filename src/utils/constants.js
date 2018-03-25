@@ -1,1 +1,2 @@
-export const skyAndGroundWidth = 5000;
+const skyAndGroundWidth = 5000;
+export default skyAndGroundWidth;
