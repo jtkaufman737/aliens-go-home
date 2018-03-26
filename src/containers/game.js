@@ -3,7 +3,7 @@ import App from '../App';
 import { moveObjects } from '../actions/index';
 
 const mapStateToProps = state => ({
-  angle: state.angle;
+  angle: state.angle,
 });
 
 const mapDispatchToProps = dispatch => ({

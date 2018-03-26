@@ -1,10 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Sky from './Sky';
 import Ground from './Ground';
 import CannonPipe from './CannonPipe';
 import CannonBase from './CannonBase';
 
-const Canvas = () => {
+
+const Canvas = (props) => {
   const viewBox = [window.innerWidth / -2, 100 - window.innerHeight, window.innerWidth, window.innerHeight];
   return (
     <svg

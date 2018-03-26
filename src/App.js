@@ -26,8 +26,8 @@ render () {
 }
 
 App.propTypes={
-  angle=PropTypes.number.isRequired,
-  moveObjects: PropTypes.func.isRequired,
+  angle:PropTypes.number.isRequired,
+  moveObjects:PropTypes.func.isRequired,
 };
 
 export default App;
