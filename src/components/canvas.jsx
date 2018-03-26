@@ -10,14 +10,20 @@ const Canvas = () => {
     <svg
       id="blob-battle-canvas"
       preserveAspectRatio="xMaxYMax none"
+      onMouseMove={props.trackMouse}
       viewBox={viewBox}
     >
       <Sky />
       <Ground />
-      <CannonPipe rotation={45}/>
+      <CannonPipe rotation={props.angle}/>
       <CannonBase />
     </svg>
   );
 };
+
+Canvas.propTypes = {
+  angle:PropTypes.number.isRequired,
+  trackMouse: PropTypes.func.isRequired,
+}
 
 export default Canvas;

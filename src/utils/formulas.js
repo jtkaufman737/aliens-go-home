@@ -25,3 +25,12 @@ const divident = x2 - x1;
 const divisor = y2 - y1;
 const quotient = divident / divisor;
 return radiansToDegrees(Math.atan(quotient)) * -1;
+
+export const getCanvasPosition = (event) => {
+  const svg=document.getElementByID('blob-battle-canvas');
+  const point = svg.createSVGPoint();
+  point.x = event.clientX;
+  point.y = event.clientY;
+  const {x,y} = point.matrixTransform(svg.getScreenCTM().inverse());
+  return {x,y};
+};
