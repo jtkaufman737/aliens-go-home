@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Blob from './Blob';
+import FlyingObjectBase from './FlyingObjectBase';
+import FlyingObjectTop from './FlyingObjectTop';
 
-const FlyingObject = (props) => (
+const FlyingObject = props => (
   <g>
-    <Blob position={props.position}/>
+    <FlyingObjectBase position={props.position} />
+    <FlyingObjectTop position={props.position} />
   </g>
 );
 
@@ -15,4 +17,4 @@ FlyingObject.propTypes = {
   }).isRequired,
 };
 
-export default FlyingObject
+export default FlyingObject;
