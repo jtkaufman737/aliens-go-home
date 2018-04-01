@@ -11,3 +11,7 @@ body {
   font-family: sans-serif;
   font-family: 'Press Start 2P', cursive;
 }
+
+.blobs {
+  color:red !important;
+}

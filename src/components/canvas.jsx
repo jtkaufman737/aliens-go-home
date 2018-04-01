@@ -25,13 +25,13 @@ const Canvas = (props) => {
         </filter>
       </defs>
       <Sky />
+      <FlyingObject position={{x: -150, y: -800}}/>
+      <FlyingObject position={{x: 150, y: -300}}/>
       <Ground />
       <CannonPipe rotation={props.angle}/>
       <CannonBase />
       <CannonBall position={{x: 0, y:-100}}/>
       <CurrentScore score={15}/>
-      <FlyingObject position={{x: -150, y: -300}}/>
-      <FlyingObject position={{x: 150, y: -300}}/>
     </svg>
   );
 };
