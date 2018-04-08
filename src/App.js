@@ -6,9 +6,18 @@ import PropTypes from 'prop-types';
 class App extends Component {
   componentDidMount() {
     const self= this;
+
     setInterval(() => {
       self.props.moveObjects(self.canvasMousePosition);
     },10);
+
+    window.onresize = () => {
+      const cnv=document.getElementById('blob-battle-canvas');
+      cnv.style.width= `${window.innerWidth}px`;
+      cnv.style.height=`${window.innerHeight}px`;
+    }
+
+    window.onresize();
   }
 
 trackMouse(event) {
