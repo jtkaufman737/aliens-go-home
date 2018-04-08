@@ -1,6 +1,6 @@
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import App from '../App';
-import { moveObjects } from '../actions/index';
+import { moveObjects, startGame } from '../actions/index';
 
 const mapStateToProps = state => ({
   angle: state.angle,
