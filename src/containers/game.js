@@ -4,11 +4,15 @@ import { moveObjects } from '../actions/index';
 
 const mapStateToProps = state => ({
   angle: state.angle,
+  gameState: state.gameState,
 });
 
 const mapDispatchToProps = dispatch => ({
   moveObjects: (mousePosition) => {
     dispatch(moveObjects(mousePosition));
+  },
+  startGame: () => {
+    dispatch(startGame());
   },
 });
 
