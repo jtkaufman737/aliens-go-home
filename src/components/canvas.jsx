@@ -10,7 +10,7 @@ import CurrentScore from './CurrentScore';
 import FlyingObject from './FlyingObject';
 import Heart from './Heart';
 import StartGame from './startGame';
-
+import Title from './Title';
 
 const Canvas = (props) => {
   const viewBox = [window.innerWidth / -2, 100 - window.innerHeight, window.innerWidth, window.innerHeight];
@@ -27,6 +27,7 @@ const Canvas = (props) => {
         </filter>
       </defs>
       <Sky />
+      <Title/>
       <FlyingObject position={{x: -150, y: -300}}/>
       <FlyingObject position={{x: 150, y: -300}}/>
       <Ground />

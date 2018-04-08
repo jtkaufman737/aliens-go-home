@@ -22,8 +22,8 @@ const StartGame = (props) => {
     x: 0, // center relative to X axis
     y: -150, // 150 up
     style: {
-      fontFamily: '"Joti One", cursive',
-      fontSize: 60,
+      fontFamily: '"Press Start 2P", cursive',
+      fontSize: 40,
       fill: '#e3e3e3',
       cursor: 'pointer',
     },
@@ -33,7 +33,7 @@ const StartGame = (props) => {
     <g filter="url(#shadow)">
       <rect {...button} />
       <text {...text}>
-        Tap To Start!
+        tap to start
       </text>
     </g>
   );
