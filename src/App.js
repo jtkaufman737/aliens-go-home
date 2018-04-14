@@ -15,6 +15,13 @@ Auth0.configure({
 class App extends Component {
   componentDidMount() {
     const self = this;
+
+    Auth0.handleAuthCallback();
+
+    Auth0.subscribe((auth) => {
+      console.log(auth);
+    });
+
     setInterval(() => {
       self.props.moveObjects(self.canvasMousePosition);
     }, 10);
