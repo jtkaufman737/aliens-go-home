@@ -11,7 +11,7 @@ const Login = (props) => {
       fill: 'transparent',
       cursor: 'pointer',
     },
-    onClick: prope.authenticate,
+    onClick: props.authenticate,
   };
 
   const text = {
@@ -30,7 +30,7 @@ const Login = (props) => {
   return (
     <g filter="url(#shadow)">
       <rect {...button} />
-      <text {...text} />
+      <text {...text} >
         Login to participate!
       </text>
     </g>
