@@ -4,7 +4,7 @@ import { pathFromBezierCurve } from '../utils/formulas';
 const Title = () => {
   const textStyle = {
     fontFamily: '"Press Start 2P", cursive',
-    fontSize: 60,
+    fontSize: 55,
     fill: '#cbca62',
   };
 
@@ -61,12 +61,12 @@ const Title = () => {
       </defs>
       <text {...textStyle}>
         <textPath xlinkHref="#AliensPath">
-          Aliens,
+          battle
         </textPath>
       </text>
       <text {...textStyle}>
         <textPath xlinkHref="#GoHomePath">
-          Go Home!
+          the blobs
         </textPath>
       </text>
     </g>

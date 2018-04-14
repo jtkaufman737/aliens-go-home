@@ -9,7 +9,7 @@ import CurrentScore from './CurrentScore';
 // import Blob from './Blob';
 import FlyingObject from './FlyingObject';
 import Heart from './Heart';
-import StartGame from './startGame';
+import StartGame from './StartGame';
 import Title from './Title';
 
 const Canvas = (props) => {
@@ -22,40 +22,47 @@ const Canvas = (props) => {
       onMouseMove={props.trackMouse}
       viewBox={viewBox}
     >
-     <defs>
+      <defs>
         <filter id="shadow">
-          <feDropShadow dx="1" dy="1" stdDeviation="2"/>
+          <feDropShadow dx="1" dy="1" stdDeviation="2" />
         </filter>
       </defs>
       <Sky />
       <Ground />
-      <CannonPipe rotation={props.angle}/>
+      <CannonPipe rotation={props.angle} />
       <CannonBase />
-      <CurrentScore score={15}/>
+      <CurrentScore score={15} />
 
-      { !
-          <g>
-            <startGame onClick={() => props.startGame()}/>
-            <Title/>
-          </g>
-
-      }
       { ! props.gameState.started &&
         <g>
-          <flyingObject position={{x: -150, y: -300}}/>
-          <flyingObject position={{x: 150, y:-300}}/>
+          <StartGame onClick={() => props.startGame()} />
+          <Title />
         </g>
       }
+
+      { props.gameState.flyingObjects.map(flyingObjects => (
+        <flyingObject
+          key={flyingObjects.id}
+          position={flyingObjects.position}
+        />
+      ))}
     </svg>
   );
 };
 
 Canvas.propTypes = {
-  angle:PropTypes.number.isRequired,
+  angle: PropTypes.number.isRequired,
   gameState: PropTypes.shape({
-    started:PropTypes.bool.isRequired,
+    started: PropTypes.bool.isRequired,
     kills: PropTypes.number.isRequired,
     lives: PropTypes.number.isRequired,
+    flyingObjects: PropTypes.arrayOf(PropTypes.shape({
+      position: PropTypes.shape({
+        x: PropTypes.number.isRequired,
+        y: PropTypes.number.isRequired,
+      }).isRequired,
+      id: PropTypes.number.isRequired,
+    })).isRequired,
   }).isRequired,
   trackMouse: PropTypes.func.isRequired,
   startGame: PropTypes.func.isRequired,
