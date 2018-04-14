@@ -1,4 +1,4 @@
-export default(state, initialGameState) => {
+export default (state, initialGameState) => {
   return {
     ...state,
     gameState: {
@@ -6,4 +6,4 @@ export default(state, initialGameState) => {
       started: true,
     }
   }
-}
+};

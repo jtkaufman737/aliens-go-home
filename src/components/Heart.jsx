@@ -12,19 +12,19 @@ const Heart = (props) => {
   const leftSide = {
     initialAxis: {
       x: props.position.x,
-      y:props.position.y,
+      y: props.position.y,
     },
     initialControlPoint: {
       x: -20,
       y: -20,
     },
-    endingControlPoint:{
-      x:-40,
-      y:10,
+    endingControlPoint: {
+      x: -40,
+      y: 10,
     },
     endingAxis: {
-      x:0,
-      y:40,
+      x: 0,
+      y: 40,
     },
   };
 
@@ -33,30 +33,30 @@ const Heart = (props) => {
       x: props.position.x,
       y: props.position.y,
     },
-    initialControlPoint:{
+    initialControlPoint: {
       x: 20,
       y: -20,
     },
-    endingControlPoint:{
-      x:40,
-      y:10,
+    endingControlPoint: {
+      x: 40,
+      y: 10,
     },
     endingAxis: {
-      x:0,
-      y:40,
+      x: 0,
+      y: 40,
     },
   };
 
   return (
     <g filter="url(#shadow)">
-       <path
-         style={heartStyle}
-         d={pathFromBezierCurve(leftSide)}
-       />
-       <path
-         style={heartStyle}
-         d={pathFromBezierCurve(rightSide)}
-       />
+      <path
+        style={heartStyle}
+        d={pathFromBezierCurve(leftSide)}
+      />
+      <path
+        style={heartStyle}
+        d={pathFromBezierCurve(rightSide)}
+      />
     </g>
   );
 };

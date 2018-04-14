@@ -1,17 +1,16 @@
 import React from 'react';
-import skyAndGroundWidth from '../utils/constants'
+import { skyAndGroundWidth } from '../utils/constants';
 
 const Ground = () => {
   const groundStyle = {
-    fill:'#59a941',
+    fill: '#59a941',
+  };
+  const division = {
+    stroke: '#458232',
+    strokeWidth: '3px',
   };
 
-  const division = {
-    stroke:'#458232',
-    strokeWidth: '3px',
-  }
-
-  return(
+  return (
     <g id="ground">
       <rect
         id="ground-2"
@@ -31,6 +30,6 @@ const Ground = () => {
       />
     </g>
   );
-}
+};
 
 export default Ground;

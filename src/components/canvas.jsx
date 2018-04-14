@@ -2,13 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Sky from './Sky';
 import Ground from './Ground';
-import CannonPipe from './CannonPipe';
 import CannonBase from './CannonBase';
-import CannonBall from './CannonBall';
-import CurrentScore from './CurrentScore';
-// import Blob from './Blob';
+import CannonPipe from './CannonPipe';
+import CurrentScore from './CurrentScore'
 import FlyingObject from './FlyingObject';
-import Heart from './Heart';
 import StartGame from './StartGame';
 import Title from './Title';
 
@@ -17,7 +14,7 @@ const Canvas = (props) => {
   const viewBox = [window.innerWidth / -2, 100 - gameHeight, window.innerWidth, gameHeight];
   return (
     <svg
-      id="blob-battle-canvas"
+      id="aliens-go-home-canvas"
       preserveAspectRatio="xMaxYMax none"
       onMouseMove={props.trackMouse}
       viewBox={viewBox}
@@ -34,16 +31,16 @@ const Canvas = (props) => {
       <CurrentScore score={15} />
 
       { ! props.gameState.started &&
-        <g>
-          <StartGame onClick={() => props.startGame()} />
-          <Title />
-        </g>
+      <g>
+        <StartGame onClick={() => props.startGame()} />
+        <Title />
+      </g>
       }
 
-      { props.gameState.flyingObjects.map(flyingObjects => (
-        <flyingObject
-          key={flyingObjects.id}
-          position={flyingObjects.position}
+      {props.gameState.flyingObjects.map(flyingObject => (
+        <FlyingObject
+          key={flyingObject.id}
+          position={flyingObject.position}
         />
       ))}
     </svg>
@@ -56,13 +53,6 @@ Canvas.propTypes = {
     started: PropTypes.bool.isRequired,
     kills: PropTypes.number.isRequired,
     lives: PropTypes.number.isRequired,
-    flyingObjects: PropTypes.arrayOf(PropTypes.shape({
-      position: PropTypes.shape({
-        x: PropTypes.number.isRequired,
-        y: PropTypes.number.isRequired,
-      }).isRequired,
-      id: PropTypes.number.isRequired,
-    })).isRequired,
   }).isRequired,
   trackMouse: PropTypes.func.isRequired,
   startGame: PropTypes.func.isRequired,

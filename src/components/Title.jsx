@@ -3,15 +3,15 @@ import { pathFromBezierCurve } from '../utils/formulas';
 
 const Title = () => {
   const textStyle = {
-    fontFamily: '"Press Start 2P", cursive',
-    fontSize: 55,
+    fontFamily: '"Joti One", cursive',
+    fontSize: 120,
     fill: '#cbca62',
   };
 
   const aliensLineCurve = {
     initialAxis: {
       x: -190,
-      y: -750,
+      y: -950,
     },
     initialControlPoint: {
       x: 95,
@@ -31,7 +31,7 @@ const Title = () => {
     ...aliensLineCurve,
     initialAxis: {
       x: -250,
-      y: -580,
+      y: -780,
     },
     initialControlPoint: {
       x: 125,
@@ -61,12 +61,12 @@ const Title = () => {
       </defs>
       <text {...textStyle}>
         <textPath xlinkHref="#AliensPath">
-          battle
+          Aliens,
         </textPath>
       </text>
       <text {...textStyle}>
         <textPath xlinkHref="#GoHomePath">
-          the blobs
+          Go Home!
         </textPath>
       </text>
     </g>

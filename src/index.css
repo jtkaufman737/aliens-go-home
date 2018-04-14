@@ -1,17 +1,12 @@
-@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
-
-html,body{
-  overflow:hidden;
-  height:100%;
-}
+@import url('https://fonts.googleapis.com/css?family=Joti+One');
 
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  font-family: 'Press Start 2P', cursive;
 }
 
-.blobs {
-  color:red !important;
+html, body {
+  overflow: hidden;
+  height: 100%;
 }
