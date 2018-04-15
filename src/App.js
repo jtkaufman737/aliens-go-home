@@ -6,18 +6,20 @@ import * as Auth0 from 'auth0-web';
 import io from 'socket.io-client';
 
 Auth0.configure({
-  domain: 'jtbominable.auth0.com',
-  clientID: 'jE6E89HOIiru5eMIt4T9U6z464FDIan6',
-  redirectUri: 'http://localhost:3000',
+  domain: 'digituz-corp.auth0.com',
+  clientID: 'D41G9fJIvLrUJivCJpAkxOA74fpxn2Rg',
+  redirectUri: 'http://localhost:3000/',
   responseType: 'token id_token',
   scope: 'openid profile manage:points',
-  audience: 'https://jtkaufman737.github.io/aliens-go-home'
+  audience: 'https://aliens-go-home.digituz.com.br',
 });
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.shoot = this.shoot.bind(this);
+    this.socket = null;
+    this.currentPlayer = null;
   }
 
   componentDidMount() {
@@ -28,42 +30,29 @@ class App extends Component {
     Auth0.subscribe((auth) => {
       if (!auth) return;
 
-      const playerProfile = Auth0.getProfile();
-      const currentPlayer = {
-        id: playerProfile.sub,
+      self.playerProfile = Auth0.getProfile();
+      self.currentPlayer = {
+        id: self.playerProfile.sub,
         maxScore: 0,
-        name: playerProfile.name,
-        picture: playerProfile.picture,
+        name: self.playerProfile.name,
+        picture: self.playerProfile.picture,
       };
 
-    this.props.loggedIn(currentPlayer);
+      this.props.loggedIn(self.currentPlayer);
 
-    const socket = io('http://localhost:3001', {
-      query: `token=${Auth0.getAccessToken()}`,
-    });
-
-    let emitted=false;
-    socket.on('players', (players) => {
-      this.props.leaderboardLoaded(players);
-
-      if (emitted) return;
-      socket.emit('new-max-score',{
-        id: playerProfile.sub,
-        maxScore: 120,
-        name: playerProfile.name,
-        picture: playerProfile.picture,
+      self.socket = io('http://localhost:3001', {
+        query: `token=${Auth0.getAccessToken()}`,
       });
-      emitted = true;
-      setTimeout(() => {
-        socket.emit('new-max-score',{
-          id: playerProfile.sub,
-          maxScore: 222,
-          name: playerProfile.name,
-          picture: playerProfile.picture,
+
+      self.socket.on('players', (players) => {
+        this.props.leaderboardLoaded(players);
+        players.forEach((player) => {
+          if (player.id === self.currentPlayer.id) {
+            self.currentPlayer.maxScore = player.maxScore;
+          }
         });
-      }, 5000);
+      });
     });
-  });
 
     setInterval(() => {
       self.props.moveObjects(self.canvasMousePosition);
@@ -77,6 +66,17 @@ class App extends Component {
     window.onresize();
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (!nextProps.gameState.started && this.props.gameState.started) {
+      if (this.currentPlayer.maxScore < this.props.gameState.kills) {
+        this.socket.emit('new-max-score', {
+          ...this.currentPlayer,
+          maxScore: this.props.gameState.kills,
+        });
+      }
+    }
+  }
+
   trackMouse(event) {
     this.canvasMousePosition = getCanvasPosition(event);
   }
@@ -84,6 +84,7 @@ class App extends Component {
   shoot() {
     this.props.shoot(this.canvasMousePosition);
   }
+
   render() {
     return (
       <Canvas
@@ -109,7 +110,7 @@ App.propTypes = {
   flyingObjects: PropTypes.arrayOf(PropTypes.shape({
     position: PropTypes.shape({
       x: PropTypes.number.isRequired,
-      y: PropTypes.number.isRequired,
+      y: PropTypes.number.isRequired
     }).isRequired,
     id: PropTypes.number.isRequired,
   })).isRequired,
@@ -130,6 +131,11 @@ App.propTypes = {
     picture: PropTypes.string.isRequired,
   })),
   shoot: PropTypes.func.isRequired,
+};
+
+App.defaultProps = {
+  currentPlayer: null,
+  players: null,
 };
 
 export default App;

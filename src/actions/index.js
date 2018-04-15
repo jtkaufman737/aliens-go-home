@@ -9,15 +9,10 @@ export const leaderboardLoaded = players => ({
   players,
 });
 
-export const shoot = (mousePosition) => ({
-  type: SHOOT,
-  mousePosition,
-})
-
 export const loggedIn = player => ({
   type: LOGGED_IN,
   player,
-})
+});
 
 export const moveObjects = mousePosition => ({
   type: MOVE_OBJECTS,
@@ -26,4 +21,9 @@ export const moveObjects = mousePosition => ({
 
 export const startGame = () => ({
   type: START_GAME,
+});
+
+export const shoot = (mousePosition) => ({
+  type: SHOOT,
+  mousePosition,
 });
