@@ -1,10 +1,11 @@
 import { calculateAngle } from '../utils/formulas';
 import createFlyingObjects from './createFlyingObjects';
+import moveBalls from './moveCannonBalls';
 
 function moveObjects(state, action) {
-  const mousePosition = action.mousePosition || {
-    x: 0,
-    y: 0,
+  if(!state.gameState.started) return state;
+
+  let cannonBalls = moveBalls(state.gameState.cannonBalls);
   };
 
   const newState = createFlyingObjects(state);
@@ -21,6 +22,7 @@ function moveObjects(state, action) {
     gameState: {
       ...newState.gameState,
       flyingObjects,
+      cannonBalls,
     },
     angle,
   };
