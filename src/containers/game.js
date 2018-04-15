@@ -22,6 +22,9 @@ const mapDispatchToProps = dispatch => ({
   startGame: () => {
     dispatch(startGame());
   },
+  shoot: () => {
+    dipatch(shoot(mousePosition))
+  },
 });
 
 const Game = connect(
