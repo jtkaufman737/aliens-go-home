@@ -61,7 +61,7 @@ const Heart = (props) => {
   );
 };
 
-Heart.propTypes = {
+Heart.PropTypes = {
   position: PropTypes.shape({
     x: PropTypes.number.isRequired,
     y: PropTypes.number.isRequired
